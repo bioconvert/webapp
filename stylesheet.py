@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
 def home():
     return {
-        'backgroundColor': '#FFFFFF',
+        'backgroundColor': 'red',
         #'height': '100px',
         'width':'80px',
         'display':'inline-block',
         'text-align':'center',
-        'padding': '50px'
+        'padding': '50px',
+
+
     }
 
 def header():
@@ -26,4 +28,20 @@ def title():
         'fontSize': 80,
         'font-family': 'Bookman, URW Bookman L, serif',
     }
+
+def image_home_style():
+    return {
+        'height':'25px',
+        'width':'25px',
+        'display': 'block',
+        'marginLeft':'auto',
+        'marginRight':'auto'
+    }
+
+def home_div():
+    return {
+    'display': 'inline-block',
+     'width': '180px',
+     'text-align': 'center'
+     }
 

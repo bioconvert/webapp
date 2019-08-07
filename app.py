@@ -1,24 +1,16 @@
+import base64
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import layout
 from stylesheet import *
 
 app = dash.Dash(__name__)
 
-app.layout = html.Div([
-    html.Div(
-        children=[
-            
-            html.Div('Home', style = home()),
-            html.Div('salut',style = header()),
-        ],
-    ),
-    html.Div(
-        children=html.Div([
-            html.H1('Bioconvert', style = title()),
-        ])
-    )
-])
+# home_image = 'images/home.png'
+# encoded_image = base64.b64encode(open(home_image, 'rb').read())
+
+app.layout = layout.mainpanel()
 
 if __name__ == '__main__':
     app.run_server(debug=True)

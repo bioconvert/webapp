@@ -1,0 +1,34 @@
+
+.rectangle{
+	width:400px;
+	height:200px;
+	background:white;
+	border-style: solid;
+	border-color:black;
+	border-width: 10px;
+}
+
+.rectangle .rectangle_text {
+    font-size: 30px;
+}
+			
+.cercle {
+    display:inline-block;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    text-align:center;
+    background: white;
+	border-style: solid;
+	border-color: #3f51b5;
+	border-width: 5px;
+    margin-left: 500px;
+}
+
+.cercle .cercle_text {
+    display:block;
+    font-weight:bold;
+    font-size: 45px;
+    line-height:60px;
+
+}
