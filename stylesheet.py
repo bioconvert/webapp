@@ -40,8 +40,15 @@ def image_home_style():
 
 def home_div():
     return {
-    'display': 'inline-block',
-     'width': '180px',
-     'text-align': 'center'
+        'display': 'inline-block',
+         'width': '180px',
+         'text-align': 'center'
      }
+def text_icon():
+    return {
+        'display': 'block',
+        'marginLeft': '380px',
+        'font-family': 'Bookman, URW Bookman L, serif',
+        'fontSize': 25
+    }
 

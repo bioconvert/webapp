@@ -8,13 +8,17 @@ def mainpanel():
         html.Div(id='Banner' ,children=
         [
             # Div for image
-            html.Div(id='Image_home' ,children=[html.Img(src='/assets/home.png', style = image_home_style()),
+            html.Div(id='Image_home',
+                children=[
+                    html.Img(src='/assets/home.png', style = image_home_style()),
             # Div for text
-            html.Div('Home', style = {'display':'block'}),
+            html.Div('Home',
+                style = {'display':'block'}),
 
-        ], style = home_div()),
+            ], style = home_div()),
             # Div for menu
-            html.Div('salut',id='Menu',style = header()
+            html.Div('salut',id='Menu',
+                style = header()
 
             ),
 
@@ -31,11 +35,19 @@ def mainpanel():
             ]),
 
         # Div for first step
-        
-        html.Div(className="cercle", id="zeubi",
-                 children=[
-                     html.Div('1', className="cercle_text")
+        html.Div(
+            html.Div(id='icon_first_step', children=
+            [
+                html.Div(className="cercle", id="cercle1",
+                     children=[
+                         html.Div('1', className="cercle_text")
 
-                ]
+                     ]
+                ),
+                html.Div('UPLOAD AN INPUT FILE',
+                         style=text_icon()),
+            ])
+
         )
+
 ])
