@@ -1,11 +1,16 @@
 
 .rectangle{
-	width:400px;
-	height:200px;
+	width:1000px;
+	height:100px;
 	background:white;
 	border-style: solid;
-	border-color:black;
-	border-width: 10px;
+	border-color:#3f51b5;
+	border-width: 5px;
+	line-height: 100px;
+    float: right;
+    margin-right: 100px;
+
+
 }
 
 .rectangle .rectangle_text {

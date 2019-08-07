@@ -35,19 +35,34 @@ def mainpanel():
             ]),
 
         # Div for first step
-        html.Div(
-            html.Div(id='icon_first_step', children=
+        html.Div(id='first_step', children=
             [
+            html.Div(id='icon_first_step', children=
+                [
                 html.Div(className="cercle", id="cercle1",
                      children=[
-                         html.Div('1', className="cercle_text")
+                         html.Div('1', className="cercle_text")  # END CERCLE_TEXT
 
-                     ]
-                ),
+                     ]), # END CERCLE
                 html.Div('UPLOAD AN INPUT FILE',
-                         style=text_icon()),
-            ])
+                     style=text_icon()), # END TEXT_ICON
+                ]
+                   , style={'display': 'inline-block'}
+            ), # END ICON_FIRST_STEP
 
-        )
+            html.Div(id= "DRAG and DROP",className='rectangle',children=
+                [
+                dcc.Upload(id="upload_file", children=
+                ["Drag and drop or", html.A(" select a file")
+                 ],style= {"textAlign": "center"}) # END upload_file
+                ]
+            ), # END DRAG and DROP
+
+
+        ]), # END FIRST STEP
+
+
+        html.Br(),
+
 
 ])

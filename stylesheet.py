@@ -49,6 +49,6 @@ def text_icon():
         'display': 'block',
         'marginLeft': '380px',
         'font-family': 'Bookman, URW Bookman L, serif',
-        'fontSize': 25
+        'fontSize': 25,
     }
 
