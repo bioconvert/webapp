@@ -5,31 +5,37 @@ from stylesheet import *
 
 
 def input_dropdown():
-    return html.Div([dcc.Dropdown(id = 'input-dropdown',
+    return html.Div(children =[
+
+        html.Div('Input Format : ', style = {'display': 'inline-block'}),
+        html.Div(dcc.Dropdown(id = 'input-dropdown',
                         options = [
                             {'label':'FASTA', 'value':'fasta'},
-                            {'label': 'SAM', 'value': 'bam'},
+                            {'label': 'SAM', 'value': 'sam'},
                             {'label': 'FASTQ', 'value': 'fastq'}
                         ],
                         value = 'Select an input format ...',
                         placeholder = 'Select an input format ...'
-                        )], style = {'float':'left', 'width':'500px'})
+                        ), style = {'display': 'inline-block', 'width':'500px','verticalAlign':'middle'})], style = {'display': 'block'})
 
 def output_dropdown():
-    return html.Div([dcc.Dropdown(id = 'output-dropdown',
+    return html.Div(children =[
+
+        html.Div('Output Format : ', style = {'display': 'inline-block'}),
+        html.Div(dcc.Dropdown(id = 'output-dropdown',
                         options = [
-                            {'label':'CLUSTAL', 'value':'fasta'},
+                            {'label':'CLUSTAL', 'value':'clustal'},
                             {'label': 'BAM', 'value': 'bam'},
-                            {'label': 'FASTA', 'value': 'fastq'}
+                            {'label': 'FASTA', 'value': 'fasta'}
                         ],
                         value = 'Select an output format ...',
                         placeholder = 'Select an output format ...'
-                        )], style = {'float':'right', 'width':'500px'})
+                        ), style={'display': 'inline-block', 'width': '500px', 'verticalAlign':'middle'})], style={'display': 'block'})
 
 
 
 def mainpanel():
-	return html.Div( id = 'Main_frame',
+    return html.Div( id = 'Main_frame',
     children=[
         html.Div(id='Banner' ,children=
         [
@@ -80,7 +86,7 @@ def mainpanel():
                 [
                 dcc.Upload(id="upload_file", children=
                 ["Drag and drop or", html.A(" select a file")
-                 ],style= {"textAlign": "center"}) # END upload_file
+                 ],style= {"textAlign": "center", 'lineHeight': '100px'}) # END upload_file
                 ]
             ), # END DRAG and DROP
 
@@ -109,6 +115,7 @@ def mainpanel():
             html.Div(id="InOut", className='rectangle', children=
             [
                 input_dropdown(),
+                html.Br(),
                 output_dropdown()
 
             ],style= {"textAlign": "center"}  # END upload_file
@@ -137,10 +144,8 @@ def mainpanel():
 
             html.Div(id="Submit", className='rectangle', children=
             [
-                dcc.Upload(id="SUBM", children=
-                ["Drag and drop or", html.A(" select a file")
-                 ], style={"textAlign": "center"})  # END upload_file
-            ]
+                html.Button('SubmiT', id='button')  # END upload_file
+            ], style= {'lineHeight':'100px'}
                      ),  # END DRAG and DROP
 
         ]),  # END SECOND STEP
