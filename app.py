@@ -11,7 +11,7 @@ app = dash.Dash(__name__)
 # home_image = 'images/home.png'
 # encoded_image = base64.b64encode(open(home_image, 'rb').read())
 
-app.layout = layout.mainpanel()
+app.layout = layout.mainframe()
 
 if __name__ == '__main__':
     app.run_server(debug=True)
