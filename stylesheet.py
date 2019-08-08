@@ -46,9 +46,11 @@ def home_div():
      }
 def text_icon():
     return {
+        'width':"350px",
         'display': 'block',
         'marginLeft': '380px',
         'font-family': 'Bookman, URW Bookman L, serif',
         'fontSize': 25,
+        "textAlign": "center",
     }
 

@@ -5,6 +5,7 @@ import dash_html_components as html
 import layout
 from stylesheet import *
 
+
 app = dash.Dash(__name__)
 
 # home_image = 'images/home.png'

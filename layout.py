@@ -2,6 +2,32 @@ import dash_core_components as dcc
 import dash_html_components as html
 from stylesheet import *
 
+
+
+def input_dopdown():
+    return dcc.Dropdown(id = 'input-dropdown',
+                        options = [
+                            {'label':'FASTA', 'value':'fasta'},
+                            {'label': 'BAM', 'value': 'bam'},
+                            {'label': 'FASTQ', 'value': 'fastq'}
+                        ],
+                        value = 'fasta',
+                        placeholder = 'Select an input file ...'
+                        )
+
+def output_dopdown():
+    return dcc.Dropdown(id = 'output-dropdown',
+                        options = [
+                            {'label':'FASTA', 'value':'fasta'},
+                            {'label': 'BAM', 'value': 'bam'},
+                            {'label': 'FASTQ', 'value': 'fastq'}
+                        ],
+                        value = 'fasta',
+                        placeholder = 'Select an input file ...'
+                        )
+
+
+
 def mainpanel():
 	return html.Div( id = 'Main_frame',
     children=[
@@ -63,6 +89,63 @@ def mainpanel():
 
 
         html.Br(),
+
+        # Div for second step
+        html.Div(id='second_step', children=
+        [
+            html.Div(id='icon_second_step', children=
+            [
+                html.Div(className="cercle", id="cercle2",
+                         children=[
+                             html.Div('2', className="cercle_text")  # END CERCLE_TEXT
+
+                         ]),  # END CERCLE
+                html.Div('SELECT THE INPUT AND OUTPUT FORMAT',
+                         style=text_icon()),  # END TEXT_ICON
+            ]
+                     , style={'display': 'inline-block'}
+                     ),  # END ICON_SECOND_STEP
+
+            html.Div(id="InOut", className='rectangle', children=
+            [
+                html.Div(id="INANDOUT", children =
+                [
+                    input_dopdown(),
+                    output_dopdown()
+                 ], style={"textAlign": "center"})  # END upload_file
+            ]
+                     ),  # END DRAG and DROP
+
+        ]),  # END SECOND STEP
+
+        html.Br(),
+
+        # Div for third step
+
+        html.Div(id='third_step', children=
+        [
+            html.Div(id='icon_third_step', children=
+            [
+                html.Div(className="cercle", id="cercle3",
+                         children=[
+                             html.Div('3', className="cercle_text")  # END CERCLE_TEXT
+
+                         ]),  # END CERCLE
+                html.Div('SUBMIT YOUR JOB',
+                         style=text_icon()),  # END TEXT_ICON
+            ]
+                     , style={'display': 'inline-block'}
+                     ),  # END ICON_SECOND_STEP
+
+            html.Div(id="Submit", className='rectangle', children=
+            [
+                dcc.Upload(id="SUBM", children=
+                ["Drag and drop or", html.A(" select a file")
+                 ], style={"textAlign": "center"})  # END upload_file
+            ]
+                     ),  # END DRAG and DROP
+
+        ]),  # END SECOND STEP
 
 
 ])
