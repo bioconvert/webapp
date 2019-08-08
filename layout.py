@@ -11,7 +11,7 @@ def input_dopdown():
                             {'label': 'BAM', 'value': 'bam'},
                             {'label': 'FASTQ', 'value': 'fastq'}
                         ],
-                        value = 'fasta',
+                        value = 'Select an input file ...',
                         placeholder = 'Select an input file ...'
                         )
 
@@ -22,8 +22,8 @@ def output_dopdown():
                             {'label': 'BAM', 'value': 'bam'},
                             {'label': 'FASTQ', 'value': 'fastq'}
                         ],
-                        value = 'fasta',
-                        placeholder = 'Select an input file ...'
+                        value = 'Select an output file ...',
+                        placeholder = 'Select an output file ...'
                         )
 
 
