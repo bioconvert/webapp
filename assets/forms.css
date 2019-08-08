@@ -9,8 +9,7 @@
 	line-height: 100px;
     float: right;
     margin-right: 100px;
-
-
+    position: relative;
 }
 
 .rectangle .rectangle_text {

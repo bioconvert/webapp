@@ -4,27 +4,27 @@ from stylesheet import *
 
 
 
-def input_dopdown():
-    return dcc.Dropdown(id = 'input-dropdown',
+def input_dropdown():
+    return html.Div([dcc.Dropdown(id = 'input-dropdown',
                         options = [
                             {'label':'FASTA', 'value':'fasta'},
-                            {'label': 'BAM', 'value': 'bam'},
+                            {'label': 'SAM', 'value': 'bam'},
                             {'label': 'FASTQ', 'value': 'fastq'}
                         ],
-                        value = 'Select an input file ...',
-                        placeholder = 'Select an input file ...'
-                        )
+                        value = 'Select an input format ...',
+                        placeholder = 'Select an input format ...'
+                        )], style = {'float':'left', 'width':'500px'})
 
-def output_dopdown():
-    return dcc.Dropdown(id = 'output-dropdown',
+def output_dropdown():
+    return html.Div([dcc.Dropdown(id = 'output-dropdown',
                         options = [
-                            {'label':'FASTA', 'value':'fasta'},
+                            {'label':'CLUSTAL', 'value':'fasta'},
                             {'label': 'BAM', 'value': 'bam'},
-                            {'label': 'FASTQ', 'value': 'fastq'}
+                            {'label': 'FASTA', 'value': 'fastq'}
                         ],
-                        value = 'Select an output file ...',
-                        placeholder = 'Select an output file ...'
-                        )
+                        value = 'Select an output format ...',
+                        placeholder = 'Select an output format ...'
+                        )], style = {'float':'right', 'width':'500px'})
 
 
 
@@ -108,12 +108,10 @@ def mainpanel():
 
             html.Div(id="InOut", className='rectangle', children=
             [
-                html.Div(id="INANDOUT", children =
-                [
-                    input_dopdown(),
-                    output_dopdown()
-                 ], style={"textAlign": "center"})  # END upload_file
-            ]
+                input_dropdown(),
+                output_dropdown()
+
+            ],style= {"textAlign": "center"}  # END upload_file
                      ),  # END DRAG and DROP
 
         ]),  # END SECOND STEP
