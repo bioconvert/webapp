@@ -51,7 +51,7 @@ def text_icon():
         'marginLeft': '380px',
         'font-family': 'Bookman, URW Bookman L, serif',
         'fontSize': 25,
-        "textAlign": "center"
+        "textAlign": "center",
     }
 
 def submit():
