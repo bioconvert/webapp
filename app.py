@@ -28,12 +28,6 @@ if not os.path.exists(UPLOAD_DIRECTORY):
 
 app.layout = layout.mainframe()
 
-def parse_data(contents, filename):
-   content_type, content_string = contents.split(',')
-   decoded = base64.b64decode(content_string)
-   return decoded
-
-
 @server.route("/download/<path:path>")
 def download(path):
     """Serve a file from the upload directory."""
