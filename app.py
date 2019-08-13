@@ -39,6 +39,7 @@ def download(path):
      Input('upload_file', 'contents')])
 
 def collect_file(filename, contents):
+    """Decode and store a file uploaded with Plotly Dash."""
     if contents:
         data = contents.encode("utf8").split(b";base64,")[1]
         with open(os.path.join(UPLOAD_DIRECTORY, filename), "wb") as fp:
@@ -69,8 +70,7 @@ def convert(filename,input_value, output_value, button):
         converter = input_value+"2"+output_value
         converter = converter.lower()
         print(converter)
-        p = bash_command(["singularity", "run", "bioconvert.img", converter, filename, "--force", "-v", "INFO"])
-        print(p)
+        bash_command(["singularity", "run", "bioconvert.img", converter, filename, "--force", "-v", "INFO"])
         return 'Your file "{}" will be convert into "{}" format Using bioconvert with the following command line ' \
                '\n : bioconvert {}2{} {}'.format(filename, output_value, input_value, output_value, filename)
 
