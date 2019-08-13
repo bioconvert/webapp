@@ -146,10 +146,12 @@ def mainframe():
 
             html.Div(id="Submit", className='rectangle', children=
             [
-                html.Button('SubmiT', id='button', style=submit()),  # END upload_file
-                html.Br(),
-                html.Div(id='convertion', style={"textAlign": "center"}),
-            ], style={'lineHeight': '100px'}
+                html.Button('SUBMIT', id='submit_button', style=submit()),  # END upload_file
+            ], style={'lineHeight': '100px'}),
+
+            html.Br(),
+            html.Br(),
+            html.Div(id='convertion', style={"textAlign": "center"}
 
 
                      ),  # END DRAG and DROP

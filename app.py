@@ -69,18 +69,16 @@ def bash_command(cmd):
     [Input('upload_file','filename'),
      Input('input-dropdown', 'value'),
      Input('output-dropdown', 'value'),
-     Input('Submit','n_clicks')])
+     Input('submit_button','n_clicks')])
 def convert(filename,input_value, output_value, button):
     if button:
         converter = input_value+"2"+output_value
         converter = converter.lower()
         print(converter)
-        p = bash_command(["singularity", "run","bioconvert.img", converter, filename, "--force", "-v", "INFO"])
+        p = bash_command(["singularity", "run", "bioconvert.img", converter, filename, "--force", "-v", "INFO"])
         print(p)
         return 'Your file "{}" will be convert into "{}" format Using bioconvert with the following command line ' \
-               '\n bioconvert {}2{} {}'.format(filename, output_value, input_value, output_value, filename)
-
-
+               '\n : bioconvert {}2{} {}'.format(filename, output_value, input_value, output_value, filename)
 
 
 if __name__ == '__main__':

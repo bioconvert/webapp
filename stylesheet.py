@@ -16,7 +16,7 @@ def header():
         'backgroundColor': '#3f51b5',
         'color': '#050D36',
         #'height': '100px',
-        'width':'1600px',
+        'width':'1500px',
         'display':'inline-block',
         'padding': '50px'
         
@@ -61,6 +61,7 @@ def submit():
         'color': 'white',
         'marginLeft': '25px',
         'width': '200px',
-        'height': '60px'
+        'height': '60px',
+        'border': 'solid black'
     }
 
