@@ -9,11 +9,10 @@ def input_dropdown():
         html.Div('Input Format : ', style={'display': 'inline-block'}), 
         html.Div(dcc.Dropdown(id='input-dropdown', 
             options=[
-                {'label': 'FASTA', 'value': 'fasta'}, 
-                {'label': 'SAM', 'value': 'sam'}, 
-                {'label': 'FASTQ', 'value': 'fastq'}
-            ], 
-            value='Select an input format ...', 
+                {'label': 'FASTA', 'value': 'FASTA'},
+                {'label': 'SAM', 'value': 'SAM'},
+                {'label': 'FASTQ', 'value': 'FASTQ'}
+            ],
             placeholder='Select an input format ...'
             ), style={'display': 'inline-block', 'width': '500px', 'verticalAlign': 'middle'})],
             style={'display': 'block'})
@@ -25,11 +24,10 @@ def output_dropdown():
         html.Div('Output Format : ', style={'display': 'inline-block'}), 
         html.Div(dcc.Dropdown(id='output-dropdown', 
             options=[
-                {'label': 'CLUSTAL', 'value': 'clustal'}, 
-                {'label': 'BAM', 'value': 'bam'}, 
-                {'label': 'FASTA', 'value': 'fasta'}
-            ], 
-            value='Select an output format ...', 
+                {'label': 'CLUSTAL', 'value': 'CLUSTAL'},
+                {'label': 'BAM', 'value': 'BAM'},
+                {'label': 'FASTA', 'value': 'FASTA'}
+            ],
             placeholder='Select an output format ...'
             ), style={'display': 'inline-block', 'width': '500px', 'verticalAlign': 'middle'})],
             style={'display': 'block'})
@@ -38,7 +36,8 @@ def output_dropdown():
 def mainframe():
     return html.Div(id='Main_frame',
     children=[
-        html.Div(id='Banner' , children=
+        dcc.Store(id= 'input_file', storage_type='session'),
+        html.Div(id='Banner', children=
         [
             # Div for image
             html.Div(id='Image_home', 
@@ -66,8 +65,10 @@ def mainframe():
             ]), 
 
         # Div for first step
+
         html.Div(id='first_step', children=
         [
+
             html.Div(id='icon_first_step', children=
             [
                 html.Div(className="cercle", id="cercle1", 
@@ -114,8 +115,10 @@ def mainframe():
             html.Div(id="InOut", className='rectangle', children=
             [
                 input_dropdown(), 
-                html.Br(), 
-                output_dropdown()
+                html.Br(),
+                output_dropdown(),
+                html.Br(),
+                html.Div(id='converter', style={"textAlign": "center"}),
 
             ], style= {"textAlign": "center"}  # END upload_file
                      ),  # END DRAG and DROP
@@ -143,8 +146,12 @@ def mainframe():
 
             html.Div(id="Submit", className='rectangle', children=
             [
-                html.Button('SubmiT', id='button', style=submit())  # END upload_file
+                html.Button('SubmiT', id='button', style=submit()),  # END upload_file
+                html.Br(),
+                html.Div(id='convertion', style={"textAlign": "center"}),
             ], style={'lineHeight': '100px'}
+
+
                      ),  # END DRAG and DROP
 
         ]),  # END third STEP
