@@ -28,10 +28,9 @@ app.layout = layout.mainframe()
 
 
 @app.callback(
-    Output('input_file', 'data'),
-    [Input('upload_file','filename'),
+    Output('input_file', 'data'), 
+    [Input('upload_file', 'filename'), 
      Input('upload_file', 'contents')])
-
 def collect_file(filename, contents):
     """Decode and store a file uploaded with Plotly Dash."""
     if contents:
@@ -42,12 +41,12 @@ def collect_file(filename, contents):
 
 
 @app.callback(
-    Output('converter', 'children'),
-    [Input('input-dropdown', 'value'),
-    Input('output-dropdown', 'value')])
-def update_output(value_input,value_output):
-    if value_input and value_output :
-        return 'You have selected "{}" as input format and "{}" as output format'.format(value_input,value_output)
+    Output('converter', 'children'), 
+    [Input('input-dropdown', 'value'), 
+     Input('output-dropdown', 'value')])
+def update_output(value_input, value_output):
+    if value_input and value_output:
+        return 'You have selected "{}" as input format and "{}" as output format'.format(value_input, value_output)
 
 
 def bash_command(cmd):
@@ -55,12 +54,13 @@ def bash_command(cmd):
     p.wait()
     p.returncode
 
+
 @app.callback(
-    Output('convertion', 'children'),
-    [Input('upload_file','filename'),
-     Input('input-dropdown', 'value'),
-     Input('output-dropdown', 'value'),
-     Input('submit_button','n_clicks')])
+    Output('convertion', 'children'), 
+    [Input('upload_file', 'filename'), 
+     Input('input-dropdown', 'value'), 
+     Input('output-dropdown', 'value'), 
+     Input('submit_button', 'n_clicks')])
 def convert(filename, input_value, output_value, button):
     if button:
         converter = input_value+"2"+output_value
@@ -71,20 +71,21 @@ def convert(filename, input_value, output_value, button):
 
 
 @app.callback(
-    Output('fake','children'),
-    [Input('upload_file','filename'),
+    Output('fake', 'children'), 
+    [Input('upload_file', 'filename'), 
      Input('output-dropdown', 'value')]
 )
-def converted_file_name(filename,format):
+def converted_file_name(filename, format):
     if filename and format:
         filename_converted = filename.split(".")[0]
         filename_converted = filename_converted+"."+format.lower()
         #  print(filename_converted)
         return filename_converted
 
+
 @app.callback(
-    Output('link','children'),
-    [Input('fake','children')]
+    Output('link', 'children'), 
+    [Input('fake', 'children')]
 )
 def file_download_link(filename):
     """Create a Plotly Dash 'A' element that downloads a file from the app."""
