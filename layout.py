@@ -151,7 +151,12 @@ def mainframe():
 
             html.Br(),
             html.Br(),
-            html.Div(id='convertion', style={"textAlign": "center"}
+            html.Div(id='convertion', style={"textAlign": "center"}),
+            html.Br(),
+            html.Br(),
+            html.Div(id='link', style={"textAlign": "center"}),
+            html.Div(id="fake", style={"display": "none"}
+
 
 
                      ),  # END DRAG and DROP

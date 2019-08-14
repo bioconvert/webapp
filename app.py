@@ -3,7 +3,7 @@ import dash
 import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
 import dash_html_components as html
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory, send_file
 import io
 import layout
 import os
@@ -13,12 +13,10 @@ from stylesheet import *
 from urllib.parse import quote as urlquote
 
 
-
-
-UPLOAD_DIRECTORY = "./project/app_uploaded_files"
+UPLOAD_DIRECTORY = "./"
 
 server = Flask(__name__)
-app = dash.Dash(__name__)
+app = dash.Dash(__name__, server=server)
 
 # home_image = 'images/home.png'
 # encoded_image = base64.b64encode(open(home_image, 'rb').read())
@@ -28,10 +26,6 @@ if not os.path.exists(UPLOAD_DIRECTORY):
 
 app.layout = layout.mainframe()
 
-@server.route("/download/<path:path>")
-def download(path):
-    """Serve a file from the upload directory."""
-    return send_from_directory(UPLOAD_DIRECTORY, path, as_attachment=True)
 
 @app.callback(
     Output('input_file', 'data'),
@@ -57,7 +51,9 @@ def update_output(value_input,value_output):
 
 
 def bash_command(cmd):
-    subprocess.Popen(cmd)
+    p = subprocess.Popen(cmd)
+    p.wait()
+    p.returncode
 
 @app.callback(
     Output('convertion', 'children'),
@@ -65,14 +61,45 @@ def bash_command(cmd):
      Input('input-dropdown', 'value'),
      Input('output-dropdown', 'value'),
      Input('submit_button','n_clicks')])
-def convert(filename,input_value, output_value, button):
+def convert(filename, input_value, output_value, button):
     if button:
         converter = input_value+"2"+output_value
         converter = converter.lower()
-        print(converter)
         bash_command(["singularity", "run", "bioconvert.img", converter, filename, "--force", "-v", "INFO"])
         return 'Your file "{}" will be convert into "{}" format Using bioconvert with the following command line ' \
                '\n : bioconvert {}2{} {}'.format(filename, output_value, input_value, output_value, filename)
+
+
+@app.callback(
+    Output('fake','children'),
+    [Input('upload_file','filename'),
+     Input('output-dropdown', 'value')]
+)
+def converted_file_name(filename,format):
+    if filename and format:
+        filename_converted = filename.split(".")[0]
+        filename_converted = filename_converted+"."+format.lower()
+        #  print(filename_converted)
+        return filename_converted
+
+@app.callback(
+    Output('link','children'),
+    [Input('fake','children')]
+)
+def file_download_link(filename):
+    """Create a Plotly Dash 'A' element that downloads a file from the app."""
+    # download_file = get_file(filename)
+
+    location = "/download/{}".format(filename)
+    #  print(location, type(location))
+    return html.A("Download Data", href=location)
+
+
+@app.server.route("/download/<path:filename>")
+def get_file(filename):
+    """Download a file."""
+    #  print(filename)
+    return send_from_directory(UPLOAD_DIRECTORY, filename, as_attachment=True)
 
 
 if __name__ == '__main__':
