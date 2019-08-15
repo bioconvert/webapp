@@ -10,10 +10,6 @@ import os
 import subprocess
 from subprocess import Popen, PIPE, STDOUT
 from stylesheet import *
-import sys
-sys.path.append("/home/sdollin/bioconvert/src/bioconvert")
-from bioconvert.core.registry import Registry
-from urllib.parse import quote as urlquote
 
 
 UPLOAD_DIRECTORY = "./"
@@ -28,7 +24,6 @@ if not os.path.exists(UPLOAD_DIRECTORY):
     os.makedirs(UPLOAD_DIRECTORY)
 
 app.layout = layout.mainframe()
-
 
 
 @app.callback(
