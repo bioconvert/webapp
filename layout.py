@@ -24,6 +24,28 @@ def get_input_format():
             )
     return options
 
+input_value = 'fasta'
+def get_output_format(input_value):
+    r = Registry()
+    all_converter = list(r.get_converters_names())
+    list_format = []
+    for converter in all_converter:
+        if converter.startswith(input_value):
+            input_format, output_format = converter.split('2', 1)
+            list_format.append(output_format)
+    list_format = list(set(list_format))
+    list_format.sort()
+    options = []
+    for format in list_format:
+        options.append(
+            {
+                'label': format,
+                'value': format
+            }
+        )
+    return options
+
+
 def input_dropdown():
     return html.Div(children=[
 
@@ -40,11 +62,7 @@ def output_dropdown():
 
         html.Div('Output Format : ', style={'display': 'inline-block'}), 
         html.Div(dcc.Dropdown(id='output-dropdown', 
-            options=[
-                {'label': 'CLUSTAL', 'value': 'CLUSTAL'},
-                {'label': 'BAM', 'value': 'BAM'},
-                {'label': 'FASTA', 'value': 'FASTA'}
-            ],
+            options=get_output_format(input_value),
             placeholder='Select an output format ...'
             ), style={'display': 'inline-block', 'width': '500px', 'verticalAlign': 'middle'})],
             style={'display': 'block'})
