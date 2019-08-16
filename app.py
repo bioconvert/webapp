@@ -4,12 +4,12 @@ import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
 import dash_html_components as html
 from flask import Flask, send_from_directory, send_file
-import io
 import layout
 import os
 import subprocess
 from subprocess import Popen, PIPE, STDOUT
 from stylesheet import *
+from bioconvert.core.registry import Registry
 
 
 UPLOAD_DIRECTORY = "./"
@@ -25,6 +25,29 @@ if not os.path.exists(UPLOAD_DIRECTORY):
 
 app.layout = layout.mainframe()
 
+
+@app.callback(
+    Output('output-dropdown', 'options'),
+    [Input('input-dropdown', 'value')])
+def get_output_format(input_value):
+    r = Registry()
+    all_converter = list(r.get_converters_names())
+    list_format = []
+    for converter in all_converter:
+        if converter.startswith(input_value):
+            input_format, output_format = converter.split('2', 1)
+            list_format.append(output_format)
+    list_format = list(set(list_format))
+    list_format.sort()
+    options = []
+    for format in list_format:
+        options.append(
+            {
+                'label': format,
+                'value': format
+            }
+        )
+    return options
 
 @app.callback(
     Output('input_file', 'data'), 

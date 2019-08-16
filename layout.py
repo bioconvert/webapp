@@ -4,7 +4,6 @@ from stylesheet import *
 from bioconvert.core.registry import Registry
 
 
-
 def get_input_format():
     r = Registry()
     all_converter = list(r.get_converters_names())
@@ -24,27 +23,6 @@ def get_input_format():
             )
     return options
 
-input_value = 'fasta'
-def get_output_format(input_value):
-    r = Registry()
-    all_converter = list(r.get_converters_names())
-    list_format = []
-    for converter in all_converter:
-        if converter.startswith(input_value):
-            input_format, output_format = converter.split('2', 1)
-            list_format.append(output_format)
-    list_format = list(set(list_format))
-    list_format.sort()
-    options = []
-    for format in list_format:
-        options.append(
-            {
-                'label': format,
-                'value': format
-            }
-        )
-    return options
-
 
 def input_dropdown():
     return html.Div(children=[
@@ -57,12 +35,13 @@ def input_dropdown():
             style={'display': 'block'})
 
 
+
+
 def output_dropdown():
     return html.Div(children=[
 
         html.Div('Output Format : ', style={'display': 'inline-block'}), 
-        html.Div(dcc.Dropdown(id='output-dropdown', 
-            options=get_output_format(input_value),
+        html.Div(dcc.Dropdown(id='output-dropdown',
             placeholder='Select an output format ...'
             ), style={'display': 'inline-block', 'width': '500px', 'verticalAlign': 'middle'})],
             style={'display': 'block'})
