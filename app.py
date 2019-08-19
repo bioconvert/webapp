@@ -30,24 +30,27 @@ app.layout = layout.mainframe()
     Output('output-dropdown', 'options'),
     [Input('input-dropdown', 'value')])
 def get_output_format(input_value):
-    r = Registry()
-    all_converter = list(r.get_converters_names())
-    list_format = []
-    for converter in all_converter:
-        if converter.startswith(input_value):
-            input_format, output_format = converter.split('2', 1)
-            list_format.append(output_format)
-    list_format = list(set(list_format))
-    list_format.sort()
     options = []
-    for format in list_format:
-        options.append(
-            {
-                'label': format,
-                'value': format
-            }
-        )
-    return options
+    try:
+        r = Registry()
+        all_converter = list(r.get_converters_names())
+        list_format = []
+        for converter in all_converter:
+            if converter.startswith(input_value):
+                input_format, output_format = converter.split('2', 1)
+                list_format.append(output_format)
+        list_format = list(set(list_format))
+        list_format.sort()
+        for format in list_format:
+            options.append(
+                {
+                    'label': format,
+                    'value': format
+                }
+            )
+        return options
+    except TypeError:
+        return options
 
 @app.callback(
     Output('input_file', 'data'), 
@@ -88,9 +91,9 @@ def convert(filename, input_value, output_value, button):
         converter = input_value+"2"+output_value
         converter = converter.lower()
         bash_command(["singularity", "run", "bioconvert.img", converter, filename, "--force", "-v", "INFO"])
-        return 'Your file "{}" will be convert into "{}" format Using bioconvert with the following command line ' \
-               '\n : bioconvert {}2{} {}'.format(filename, output_value, input_value, output_value, filename)
-
+        return html.P('The conversion is complete, your file "{}" has been converter in "{}" '
+                      'format using bioconvert with the following command line : '.format(filename, output_value)), \
+               html.P(' bioconvert {}2{} {}'.format(input_value, output_value, filename), style= {"font-weight":"bold"})
 
 @app.callback(
     Output('fake', 'children'), 
@@ -107,15 +110,15 @@ def converted_file_name(filename, format):
 
 @app.callback(
     Output('link', 'children'), 
-    [Input('fake', 'children')]
+    [Input('fake', 'children'),Input('submit_button','n_clicks')]
 )
-def file_download_link(filename):
+def file_download_link(filename,button):
     """Create a Plotly Dash 'A' element that downloads a file from the app."""
     # download_file = get_file(filename)
-
-    location = "/download/{}".format(filename)
-    #  print(location, type(location))
-    return html.A("Download Data", href=location)
+    if button:
+        location = "/download/{}".format(filename)
+        #  print(location, type(location))
+        return html.A("Download Data", href=location)
 
 
 @app.server.route("/download/<path:filename>")

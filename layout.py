@@ -67,7 +67,7 @@ def mainframe():
                 style=header()),
 
         ], 
-            style={'display': 'inline-block', }
+            style={'display': 'inline-block','width':"100%" }
     ), 
         # Div for Title
         html.Div(id='Logo', 

@@ -3,7 +3,7 @@ def home():
     return {
         'backgroundColor': 'red',
         #'height': '100px',
-        'width':'80px',
+        'width':'20%',
         'display':'inline-block',
         'text-align':'center',
         'padding': '50px',
@@ -16,7 +16,7 @@ def header():
         'backgroundColor': '#3f51b5',
         'color': '#050D36',
         #'height': '100px',
-        'width':'1500px',
+        'width':'80%',
         'display':'inline-block',
         'padding': '50px'
         
