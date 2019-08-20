@@ -116,7 +116,7 @@ def file_download_link(filename,button):
     if button:
         location = "/download/{}".format(filename)
         #  print(location, type(location))
-        return html.A("Download Data", href=location)
+        return html.A(html.Button("Download Data", style=submit()), href=location)
 
 
 @app.server.route("/download/<path:filename>")

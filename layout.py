@@ -143,7 +143,6 @@ def mainframe():
 
         ]),  # END SECOND STEP
 
-        html.Br(),
 
         # Div for third step
 
@@ -170,9 +169,7 @@ def mainframe():
             html.Br(),
             html.Br(),
             html.Div(id='convertion', style={"textAlign": "center"}),
-            html.Br(),
-            html.Br(),
-            html.Div(id='link', style={"textAlign": "center"}),
+            # html.Div(id='link', style={"textAlign": "center"}),
             html.Div(id="fake", style={"display": "none"}
 
 
@@ -180,6 +177,28 @@ def mainframe():
                      ),  # END DRAG and DROP
 
         ]),  # END third STEP
+
+        # Div for third step
+
+        html.Div(id='fourth_step', children=
+        [
+            html.Div(id='icon_fourth_step', children=
+            [
+                html.Div(className="cercle", id="cercle4",
+                         children=[
+                             html.Div('4', className="cercle_text")  # END CERCLE_TEXT
+
+                         ]),  # END CERCLE
+                html.Div('DOWNLOAD YOUR DATA',
+                         style=text_icon()),  # END TEXT_ICON
+            ]
+                     , style={'display': 'inline-block'}
+                     ),  # END ICON_SECOND_STEP
+
+            html.Div(id="link", className='rectangle', style={'lineHeight': '100px'}),
+        ]),
+
+        html.Br(),
 
         html.Div(id='footer', children=
         [
