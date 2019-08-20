@@ -103,16 +103,19 @@ def mainframe():
             html.Div(id= "DRAG and DROP", className='rectangle', children=
                 [
                 dcc.Upload(id="upload_file", children=
-                ["Drag and drop or", html.A(" select a file")
-                 ], style= {"textAlign": "center", 'lineHeight': '100px'})  # END upload_file
+                ["Drag and drop or", html.A(" select a file"),
+                 ], style= {"textAlign": "center", 'lineHeight': '100px'}),  # END upload_file
+                html.Br(),
+                html.Div(id='guess_format', style={"textAlign": "center"})
                 ]
             ),  # END DRAG and DROP
 
 
         ]),  # END FIRST STEP
 
-
         html.Br(),
+        html.Br(),
+
 
         # Div for second step
         html.Div(id='second_step', children=

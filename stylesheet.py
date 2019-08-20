@@ -67,7 +67,18 @@ def submit():
         'marginLeft': '25px',
         'width': '200px',
         'height': '60px',
-        'border': 'solid black'
+    }
+
+def download():
+    return {
+        'background': '#00FF00',
+        'fontSize': '30px',
+        'color': 'white',
+        'marginLeft': '25px',
+        'width': '200px',
+        'height': '60px',
+        "textAlign": "center",
+
     }
 
 def footer():

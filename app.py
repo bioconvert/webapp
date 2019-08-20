@@ -10,7 +10,7 @@ import subprocess
 from subprocess import Popen, PIPE, STDOUT
 from stylesheet import *
 from bioconvert.core.registry import Registry
-
+from bioconvert.io.sniffer import Sniffer
 
 UPLOAD_DIRECTORY = "./"
 
@@ -23,6 +23,15 @@ if not os.path.exists(UPLOAD_DIRECTORY):
 
 app.layout = layout.mainframe()
 
+@app.callback(
+    Output('guess_format', 'children'),
+    [Input('upload_file', 'filename')]
+)
+def sniffer(filename):
+    if filename:
+        s = Sniffer()
+        file_format = s.sniff(filename)
+        return "Your file has been identified as '{}' by Bioconvert ".format(file_format)
 
 @app.callback(
     Output('output-dropdown', 'options'),
@@ -116,7 +125,7 @@ def file_download_link(filename,button):
     if button:
         location = "/download/{}".format(filename)
         #  print(location, type(location))
-        return html.A(html.Button("Download Data", style=submit()), href=location)
+        return html.A(html.Button("Download", style=download()), href=location)
 
 
 @app.server.route("/download/<path:filename>")
