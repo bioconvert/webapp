@@ -14,11 +14,16 @@ def home():
 def header():
     return {
         'backgroundColor': '#3f51b5',
-        'color': '#050D36',
+        'color': 'white',
+        "font-family": "Garamond, serif",
+        "font-weight": "bold",
+        'fontSize': 20,
         #'height': '100px',
         'width':'80%',
         'display':'inline-block',
-        'padding': '50px'
+        'padding': '50px',
+        'text-align':'right'
+
         
     }
 
@@ -65,3 +70,16 @@ def submit():
         'border': 'solid black'
     }
 
+def footer():
+    return {
+        'background':'#050D36',
+        'color': 'white',
+        "font-family": "Garamond, serif",
+        "font-weight": "bold",
+        'fontSize': 20,
+        # 'height': '100px',
+        'width': '95%',
+        'display': 'inline-block',
+
+
+    }

@@ -17,8 +17,6 @@ UPLOAD_DIRECTORY = "./"
 server = Flask(__name__)
 app = dash.Dash(__name__, server=server)
 
-# home_image = 'images/home.png'
-# encoded_image = base64.b64encode(open(home_image, 'rb').read())
 
 if not os.path.exists(UPLOAD_DIRECTORY):
     os.makedirs(UPLOAD_DIRECTORY)
@@ -87,7 +85,7 @@ def bash_command(cmd):
      Input('output-dropdown', 'value'), 
      Input('submit_button', 'n_clicks')])
 def convert(filename, input_value, output_value, button):
-    if button:
+    if button and input_value and output_value:
         converter = input_value+"2"+output_value
         converter = converter.lower()
         bash_command(["singularity", "run", "bioconvert.img", converter, filename, "--force", "-v", "INFO"])
