@@ -116,8 +116,9 @@ def mainframe():
 
         html.Br(),
         html.Br(),
-        dbc.Tooltip("Be careful, you are limited to a file of less than 100 MB. For heavier input file please install bioconvert",
-                    target="upload_file",style={ "color":"red"}),
+        dbc.Tooltip(children=[html.P("Be careful, you are limited"),html.P("to a file of less than 100 MB."),
+                    html.P(" For heavier input file"), html.P("please install bioconvert")],
+                    target="upload_file",style={ "color":"red", 'border':'1px dotted black', 'background-color': 'yellow','text-align':'center'}),
 
 
         # Div for second step
