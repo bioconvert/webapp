@@ -1,5 +1,6 @@
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_bootstrap_components as dbc
 from stylesheet import *
 from bioconvert.core.registry import Registry
 
@@ -115,6 +116,8 @@ def mainframe():
 
         html.Br(),
         html.Br(),
+        dbc.Tooltip("Be careful, you are limited to a file of less than 100 MB. For heavier input file please install bioconvert",
+                    target="upload_file",style={ "color":"red"}),
 
 
         # Div for second step
