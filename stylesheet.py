@@ -57,6 +57,7 @@ def text_icon():
         'font-family': 'Bookman, URW Bookman L, serif',
         'fontSize': 25,
         "textAlign": "center",
+        'line-height': 'normal'
     }
 
 def submit():

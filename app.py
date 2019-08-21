@@ -24,14 +24,18 @@ if not os.path.exists(UPLOAD_DIRECTORY):
 app.layout = layout.mainframe()
 
 @app.callback(
-    Output('guess_format', 'children'),
+    [Output('guess_format', 'children'), Output('input-dropdown','value')],
     [Input('upload_file', 'filename')]
 )
 def sniffer(filename):
     if filename:
         s = Sniffer()
         file_format = s.sniff(filename)
-        return "Your file has been identified as '{}' by Bioconvert ".format(file_format)
+        return ["Your file has been identified as '{}' by Bioconvert ".format(file_format), file_format]
+    else:
+        #  Two outputs are defined in the callback, so you have to return a list of two. Otherwise we have an error.
+        #  Since we do not want to display anything when the user has not yet uploaded this list is empty
+        return [None,None]
 
 @app.callback(
     Output('output-dropdown', 'options'),

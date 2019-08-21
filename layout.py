@@ -146,6 +146,7 @@ def mainframe():
 
         ]),  # END SECOND STEP
 
+        html.Br(),
 
         # Div for third step
 
@@ -180,6 +181,8 @@ def mainframe():
                      ),  # END DRAG and DROP
 
         ]),  # END third STEP
+
+        html.Br(),
 
         # Div for third step
 
