@@ -31,7 +31,10 @@ def sniffer(filename):
     if filename:
         s = Sniffer()
         file_format = s.sniff(filename)
-        return ["Your file has been identified as '{}' by Bioconvert ".format(file_format), file_format]
+        if file_format is None:
+            return ["", ""]
+        else:
+            return [r"Your input file is probably in {} format. If not, please change the format here below".format(file_format), file_format]
     else:
         #  Two outputs are defined in the callback, so you have to return a list of two. Otherwise we have an error.
         #  Since we do not want to display anything when the user has not yet uploaded this list is empty
@@ -102,7 +105,7 @@ def convert(filename, input_value, output_value, button):
         converter = input_value+"2"+output_value
         converter = converter.lower()
         bash_command(["singularity", "run", "bioconvert.img", converter, filename, "--force", "-v", "INFO"])
-        return html.P('The conversion is complete, your file "{}" has been converter in "{}" '
+        return html.P('The conversion is complete, your file "{}" has been converted in "{}" '
                       'format using bioconvert with the following command line : '.format(filename, output_value)), \
                html.P(' bioconvert {}2{} {}'.format(input_value, output_value, filename), style= {"font-weight":"bold"})
 
