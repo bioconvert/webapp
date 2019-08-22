@@ -130,12 +130,12 @@ def file_download_link(filename,button):
     """Create a Plotly Dash 'A' element that downloads a file from the app."""
     # download_file = get_file(filename)
     if button:
-        location = "/download/{}".format(filename)
+        location = "/downloads/{}".format(filename)
         #  print(location, type(location))
         return html.A(html.Button("Download", style=download()), href=location)
 
 
-@app.server.route("/download/<path:filename>")
+@app.server.route("/downloads/<path:filename>")
 def get_file(filename):
     """Download a file."""
     #  print(filename)
