@@ -1,57 +1,61 @@
 # -*- coding: utf-8 -*-
-def home():
+def home(): 
     return {
         'backgroundColor': 'red',
-        #'height': '100px',
-        'width':'20%',
-        'display':'inline-block',
-        'text-align':'center',
+        'width': '20%',
+        'display': 'inline-block',
+        'text-align': 'center',
         'padding': '50px',
 
 
     }
 
-def header():
+
+def header(): 
     return {
         'backgroundColor': '#3f51b5',
         'color': 'white',
         "font-family": "Garamond, serif",
         "font-weight": "bold",
         'fontSize': 20,
-        #'height': '100px',
-        'width':'80%',
-        'display':'inline-block',
+        'width': '80%',
+        'display': 'inline-block',
         'padding': '50px',
-        'text-align':'right'
+        'text-align': 'right'
 
         
     }
 
-def title():
+
+def title(): 
     return {
         'color': '#050D36',
         'fontSize': 80,
         'font-family': 'Bookman, URW Bookman L, serif',
     }
 
-def icon_style():
+
+def icon_style(): 
     return {
-        'height':'25px',
-        'width':'25px',
+        'height': '25px',
+        'width': '25px',
         'display': 'block',
-        'marginLeft':'auto',
-        'marginRight':'auto'
+        'marginLeft': 'auto',
+        'marginRight': 'auto'
     }
 
-def home_div():
+
+def home_div(): 
     return {
         'display': 'inline-block',
-         'width': '180px',
-         'text-align': 'center'
+        'width': '180px',
+        'text-align': 'center'
      }
-def text_icon():
+
+
+def text_icon(): 
     return {
-        'width':"350px",
+        'width': "350px",
         'display': 'block',
         'marginLeft': '380px',
         'font-family': 'Bookman, URW Bookman L, serif',
@@ -60,7 +64,8 @@ def text_icon():
         'line-height': 'normal'
     }
 
-def submit():
+
+def submit(): 
     return {
         'background': '#FF8C00',
         'fontSize': '30px',
@@ -70,7 +75,8 @@ def submit():
         'height': '60px',
     }
 
-def download():
+
+def download(): 
     return {
         'background': '#00FF00',
         'fontSize': '30px',
@@ -82,9 +88,10 @@ def download():
 
     }
 
-def footer():
+
+def footer(): 
     return {
-        'background':'#050D36',
+        'background': '#050D36',
         'color': 'white',
         "font-family": "Garamond, serif",
         "font-weight": "bold",
@@ -94,4 +101,12 @@ def footer():
         'display': 'inline-block',
 
 
+    }
+
+
+def tooltip_style(): 
+    return {
+        "color": "red",
+        'background-color': 'white',
+        'text-align': 'center'
     }
