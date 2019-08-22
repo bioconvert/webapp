@@ -118,11 +118,12 @@ def mainframe():
                 dcc.Upload(id="upload_file", children=
                 ["Drag and drop or", html.A(" select a file"),
                  ], style= {"textAlign": "center", 'lineHeight': '100px'}),  # END upload_file
-                html.Br(),
+
                 html.Div(id='guess_format', style={"textAlign": "center"})
                 ]
             ),  # END DRAG and DROP
-
+            html.Br(),
+            html.Br(),
 
         ]),  # END FIRST STEP
 
@@ -169,6 +170,7 @@ def mainframe():
         ]),  # END SECOND STEP
 
         html.Br(),
+        html.Br(),
         dbc.Tooltip(children=[
             html.Img(src='/assets/attention.png', style=icon_style()),
             html.P("If the formats you want are"),
@@ -200,7 +202,7 @@ def mainframe():
             [
                 html.Button('SUBMIT', id='submit_button', style=submit()),  # END upload_file
             ], style={'lineHeight': '100px'}),
-
+            html.Br(),
             html.Br(),
             html.Br(),
             dbc.Tooltip(children=[
