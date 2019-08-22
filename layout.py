@@ -6,25 +6,34 @@ from bioconvert.core.registry import Registry
 
 
 def get_input_format():
+    """This function allow to fill the input_dropdown
+
+    :return: all the input format available in bioconvert
+    :rtype: dict
+    """
+
     r = Registry()
     all_converter = list(r.get_converters_names())
     list_format = []
+    #  We collect input file by splitting the converters
     for converter in all_converter:
         input_format, output_format = converter.split('2', 1)
         list_format.append(input_format)
     list_format = list(set(list_format))
+    #  to have sorted input format in the dropdown
     list_format.sort()
     options = []
+    #  the dropdown option take a dictionnary as argument, so convert the list in dict. Label and value is the same
     for format in list_format:
-            options.append(
-                {
-                    'label': format,
-                    'value': format
-                }
-            )
+        options.append(
+            {
+                'label': format,
+                'value': format
+            }
+        )
     return options
 
-
+#  This fonction return the input dropdown by calling the get_input_format function
 def input_dropdown():
     return html.Div(children=[
 
@@ -37,7 +46,7 @@ def input_dropdown():
 
 
 
-
+#  This fonction return the output dropdown componnent
 def output_dropdown():
     return html.Div(children=[
 
@@ -54,47 +63,50 @@ def mainframe():
         dcc.Store(id= 'input_file', storage_type='session'),
         html.Div(id='Banner', children=
         [
-            # Div for image
+            # Div for menu home
             html.Div(id='Image_home',
-                children=[
-                    html.Img(src='/assets/home.png', style=image_home_style()),
-            # Div for text
-            html.Div('Home',
-                style={'display': 'block'}),
+                children=
+                [
+                    html.Img(src='/assets/home.png', style=icon_style()),
+                    # Div for text menu home
+                    html.Div('Home',style={'display': 'block'}),
 
-            ], style=home_div()),
+                ], style=home_div()),  # END menu home
             # Div for menu
             html.Div(id='section',
-                children=[
-                 html.Div('How it works', id="how_section",style={'display': 'inline-block',"marginRight":"20px"}),
-                 # Div for text
-                 html.Div("About", id="about_section",style={'display': 'inline-block'}),
-                ], style=header()),
+                children=
+                [
+                    html.Div('How it works', id="how_section",style={'display': 'inline-block',"marginRight":"20px"}),
+                    html.Div("About", id="about_section",style={'display': 'inline-block'}),
+                ], style=header()),  # END menu
 
-        ],
-            style={'display': 'inline-block', 'width':"100%" }
-    ),
+        ], style={'display': 'inline-block', 'width':"100%"}
+        ),
+
         # Div for Title
         html.Div(id='Logo',
-            children=[
-                html.Div(id='Title', children=[
+            children=
+            [
+                html.Div(id='Title', children=
+                [
                     html.H1('Bioconvert', style=title()),
                 ])
 
             ]),
 
-        # Div for first step
 
+        # Div for first step
         html.Div(id='first_step', children=
         [
 
             html.Div(id='icon_first_step', children=
             [
+                # BEGIN CERCLE
                 html.Div(className="cercle", id="cercle1",
-                     children=[
-                         html.Div('1', className="cercle_text")  # END CERCLE_TEXT
-
-                     ]),  # END CERCLE
+                    children=
+                    [
+                        html.Div('1', className="cercle_text")  # END CERCLE_TEXT
+                    ]),  # END CERCLE
                 html.Div('UPLOAD AN INPUT FILE',
                          style=text_icon()),
             ]  # END TEXT_ICON
@@ -116,9 +128,14 @@ def mainframe():
 
         html.Br(),
         html.Br(),
-        dbc.Tooltip(children=[html.P("Be careful, you are limited"),html.P("to a file of less than 100 MB."),
-                    html.P(" For heavier input file"), html.P("please install bioconvert")],
-                    target="upload_file",placement= 'right',style={ "color":"red", 'border':'1px dotted black', 'background-color': 'yellow','text-align':'center'}),
+        dbc.Tooltip(children=[
+            html.Img(src='/assets/attention.png', style=icon_style()),
+            html.P("Be careful, you are limited"),
+            html.P("to a file of less than 100 MB."),
+            html.P(" For heavier input file"),
+            html.P("please install bioconvert")
+        ],
+        target="upload_file",placement= 'right',className='arrow'),
 
 
         # Div for second step
@@ -151,6 +168,14 @@ def mainframe():
         ]),  # END SECOND STEP
 
         html.Br(),
+        dbc.Tooltip(children=[
+            html.P("If the formats you want are"),
+            html.P("not available. It is possible to"),
+            html.P("add new converter through"),
+            html.P("GitHub or to make an issue.")
+        ],
+            target="InOut", placement='right', style={"color": "red", 'border': '1px dotted black',
+                                                            'background-color': 'yellow', 'text-align': 'center'}),
 
         # Div for third step
 
@@ -176,6 +201,13 @@ def mainframe():
 
             html.Br(),
             html.Br(),
+            dbc.Tooltip(children=[
+                html.P("You can also encourage us"),
+                html.P("by putting a star on"),
+                html.P("the bioconvet project on GitHub"),
+            ],
+                target="Submit", placement='right', style={"color": "red", 'border': '1px dotted black',
+                                                          'background-color': 'yellow', 'text-align': 'center'}),
             html.Div(id='convertion', style={"textAlign": "center"}),
             # html.Div(id='link', style={"textAlign": "center"}),
             html.Div(id="fake", style={"display": "none"}

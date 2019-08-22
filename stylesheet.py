@@ -34,7 +34,7 @@ def title():
         'font-family': 'Bookman, URW Bookman L, serif',
     }
 
-def image_home_style():
+def icon_style():
     return {
         'height':'25px',
         'width':'25px',
