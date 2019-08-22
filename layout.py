@@ -209,7 +209,7 @@ def mainframe():
                 html.Img(src='/assets/attention.png', style=icon_style()),
                 html.P("You can also encourage us"),
                 html.P("by putting a star on"),
-                html.P("the bioconvet project on GitHub"),
+                html.P("the bioconvert project on GitHub"),
             ],
                 target="Submit", placement='right', style={"color": "red",
                                                             'background-color': 'white', 'text-align': 'center'}),
