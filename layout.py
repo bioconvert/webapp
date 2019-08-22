@@ -113,7 +113,7 @@ def mainframe():
                      , style={'display': 'inline-block'}
             ),  # END ICON_FIRST_STEP
 
-            html.Div(id= "DRAG and DROP", className='rectangle', children=
+            html.Div(id= "DRAG_and_DROP", className='rectangle', children=
                 [
                 dcc.Upload(id="upload_file", children=
                 ["Drag and drop or", html.A(" select a file"),
@@ -135,7 +135,8 @@ def mainframe():
             html.P(" For heavier input file"),
             html.P("please install bioconvert")
         ],
-        target="upload_file",placement= 'right',className='arrow'),
+        target="DRAG_and_DROP",placement= 'right',className='arrow::before', style={"color": "red",
+                                                            'background-color': 'white', 'text-align': 'center'}),
 
 
         # Div for second step
@@ -169,13 +170,14 @@ def mainframe():
 
         html.Br(),
         dbc.Tooltip(children=[
+            html.Img(src='/assets/attention.png', style=icon_style()),
             html.P("If the formats you want are"),
             html.P("not available. It is possible to"),
             html.P("add new converter through"),
             html.P("GitHub or to make an issue.")
         ],
-            target="InOut", placement='right', style={"color": "red", 'border': '1px dotted black',
-                                                            'background-color': 'yellow', 'text-align': 'center'}),
+            target="InOut", placement='right', style={"color": "red",
+                                                            'background-color': 'white', 'text-align': 'center'}),
 
         # Div for third step
 
@@ -202,12 +204,13 @@ def mainframe():
             html.Br(),
             html.Br(),
             dbc.Tooltip(children=[
+                html.Img(src='/assets/attention.png', style=icon_style()),
                 html.P("You can also encourage us"),
                 html.P("by putting a star on"),
                 html.P("the bioconvet project on GitHub"),
             ],
-                target="Submit", placement='right', style={"color": "red", 'border': '1px dotted black',
-                                                          'background-color': 'yellow', 'text-align': 'center'}),
+                target="Submit", placement='right', style={"color": "red",
+                                                            'background-color': 'white', 'text-align': 'center'}),
             html.Div(id='convertion', style={"textAlign": "center"}),
             # html.Div(id='link', style={"textAlign": "center"}),
             html.Div(id="fake", style={"display": "none"}
