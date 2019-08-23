@@ -206,15 +206,15 @@ def mainframe():
             html.Br(), 
             html.Br(), 
             dbc.Tooltip(children=[
-                html.Img(src='/assets/attention.png', style=icon_style()), 
-                html.P("You can also encourage us"), 
-                html.P("by putting a star on"), 
-                html.P("the bioconvet project on GitHub"), 
-            ], 
-                target="Submit", placement='right', style=tooltip_style()),
-            html.Div(id='convertion', style={"textAlign": "center"}), 
+                html.Img(src='/assets/attention.png', style=icon_style()),
+                html.P("You can also encourage us"),
+                html.P("by putting a star on"),
+                html.P("the bioconvert project on GitHub"),
+            ],
+                target="Submit", placement='right', style={"color": "red",
+                                                            'background-color': 'white', 'text-align': 'center'}),
+            html.Div(id='convertion', style={"textAlign": "center"}),
             # html.Div(id='link', style={"textAlign": "center"}), 
-            html.Div(id="fake", style={"display": "none"}
 
 
 
