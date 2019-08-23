@@ -122,8 +122,9 @@ def mainframe():
                 [
                     dcc.Upload(id="upload_file", children=
                     [
-                        "Drag and drop or", html.A(" select a file"),
-                    ], style={"textAlign": "center", 'lineHeight': '100px'}),  # END upload_file
+                        html.Img(src='/assets/upload.png', style={'marginLeft':'50px', 'height': '80px', 'width': '80px','display': 'inline-block', 'vertical-align':'middle'}),
+                        html.Div("Drag and drop or select a file", style={'marginLeft':'50px', 'display': 'inline-block','color': '#FF8C00', "fontSize": 35,})
+                    ], style={"textAlign": "center", 'lineHeight': '100px', 'display': 'inline-block' }),  # END upload_file
                     html.Div(id='guess_format', style={"textAlign": "center"})
                 ]
             ),  # END DRAG and DROP
