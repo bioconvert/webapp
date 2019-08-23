@@ -3,7 +3,7 @@ import dash
 import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
 import dash_html_components as html
-from flask import Flask, send_from_directory
+from flask import Flask, send_from_directory,after_this_request
 import layout
 import os
 import subprocess
@@ -11,6 +11,7 @@ from subprocess import Popen, PIPE, STDOUT
 from stylesheet import *
 from bioconvert.core.registry import Registry
 from bioconvert.io.sniffer import Sniffer
+import bioconvert
 
 UPLOAD_DIRECTORY = "./"
 
@@ -104,7 +105,7 @@ def convert(filename, input_value, output_value, button):
     if button and input_value and output_value:
         converter = input_value+"2"+output_value
         converter = converter.lower()
-        bash_command(["singularity", "run", "bioconvert.img", converter, filename, "--force", "-v", "INFO"])
+        bash_command(["bioconvert", converter, filename, "--force", "-v", "INFO"])
         return html.P('The conversion is complete, your file "{}" has been converted in "{}" '
                       'format using bioconvert with the following command line : '.format(filename, output_value)), \
                html.P(' bioconvert {}2{} {}'.format(input_value, output_value, filename), style= {"font-weight":"bold"})
@@ -139,6 +140,13 @@ def file_download_link(filename,button):
 def get_file(filename):
     """Download a file."""
     #  print(filename)
+    @after_this_request
+    def remove_file(response):
+        try:
+            os.remove('/downloads/{}'.format(filename))
+        except OSError:  # pragma: no cover
+            pass  # pragma: no cover
+        return response
     return send_from_directory(UPLOAD_DIRECTORY, filename, as_attachment=True)
 
 

@@ -38,8 +38,8 @@ def input_dropdown():
     #  This fonction return the input dropdown by calling the get_input_format function
     return html.Div(children=[
 
-        html.Div('Input Format : ', style={'display': 'inline-block'}), 
-        html.Div(dcc.Dropdown(id='input-dropdown', 
+        html.Div('INPUT FORMAT : ', style={'display': 'inline-block', 'color': '#FF8C00', "font-weight": "bold"}),
+        html.Div(dcc.Dropdown(id='input-dropdown',
             options=get_input_format(),
             placeholder='Select an input format ...'),
                  style={'display': 'inline-block', 'width': '500px', 'verticalAlign': 'middle'})],
@@ -50,7 +50,7 @@ def output_dropdown():
     #  This fonction return the output dropdown componnent
     return html.Div(children=[
 
-        html.Div('Output Format : ', style={'display': 'inline-block'}), 
+        html.Div('OUTPUT FORMAT : ', style={'display': 'inline-block', 'color': '#FF8C00', "font-weight": "bold",}),
         html.Div(dcc.Dropdown(id='output-dropdown', 
             placeholder='Select an output format ...'), 
                  style={'display': 'inline-block', 'width': '500px', 'verticalAlign': 'middle'})], 
