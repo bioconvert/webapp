@@ -211,10 +211,9 @@ def mainframe():
                 html.P("by putting a star on"),
                 html.P("the bioconvert project on GitHub"),
             ],
-                target="Submit", placement='right', style={"color": "red",
-                                                            'background-color': 'white', 'text-align': 'center'}),
+                target="Submit", placement='right', style=tooltip_style()),
             html.Div(id='convertion', style={"textAlign": "center"}),
-            # html.Div(id='link', style={"textAlign": "center"}), 
+            html.Div(id="fake", style={"display": "none"}
 
 
 
@@ -222,7 +221,7 @@ def mainframe():
 
         ]),  # END third STEP
 
-        html.Br(), 
+        html.Br(),
 
         # Div for third step
 
