@@ -3,7 +3,7 @@ import dash
 import dash_core_components as dcc
 from dash.dependencies import Input, Output, State
 import dash_html_components as html
-from flask import Flask, send_from_directory, send_file
+from flask import Flask, send_from_directory,request
 import layout
 import os
 import subprocess
@@ -137,6 +137,9 @@ def get_file(filename):
     """Download a file."""
     #  print(filename)
     return send_from_directory(UPLOAD_DIRECTORY, filename, as_attachment=True)
+
+# @app.route("/download/<path:filename>",methods=["GET","POST"])
+# def get_the_name():
 
 
 if __name__ == '__main__':

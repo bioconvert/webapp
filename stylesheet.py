@@ -32,6 +32,7 @@ def title():
         'color': '#050D36',
         'fontSize': 80,
         'font-family': 'Bookman, URW Bookman L, serif',
+        'display': 'inline-block',
     }
 
 

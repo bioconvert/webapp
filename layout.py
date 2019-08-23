@@ -89,11 +89,16 @@ def mainframe():
             [
                 html.Div(id='Title', children=
                 [
-                    html.H1('Bioconvert', style=title()), 
-                ])
+                    html.H1('Bioconvert ', style=title()),
+                    html.H1('|', style={'color': '#050D36','fontSize': 100,'font-family': "", 'display': 'inline-block'}),
+                    html.Div(children=[
+                        html.P('Bioinformatics ', style={'color': '#050D36','fontSize': 25, }),
+                        html.P(' formats converter', style={'color': '#050D36','fontSize': 25,})
+                    ],style={'display': 'inline-block', 'text-align':'center', }),
+                ],style={'vertical-align':'middle' }),
 
-            ]), 
 
+            ]),
 
         # Div for first step
         html.Div(id='first_step', children=
