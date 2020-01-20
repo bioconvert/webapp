@@ -26,8 +26,7 @@ app.layout = layout.mainframe()
 
 @app.callback(
     [Output('guess_format', 'children'), Output('input-dropdown','value')],
-    [Input('upload_file', 'filename')]
-)
+    [Input('upload_file', 'filename')])
 def sniffer(filename):
     if filename:
         s = Sniffer()
@@ -37,8 +36,10 @@ def sniffer(filename):
         else:
             return [r"Your input file is probably in {} format. If not, please change the format here below".format(file_format), file_format]
     else:
-        #  Two outputs are defined in the callback, so you have to return a list of two. Otherwise we have an error.
-        #  Since we do not want to display anything when the user has not yet uploaded this list is empty
+        # Two outputs are defined in the callback, so you have to
+        # return a list of two. Otherwise we have an error.
+        # Since we do not want to display anything when the user has
+        # not yet uploaded this list is empty
         return [None,None]
 
 @app.callback(
@@ -68,8 +69,8 @@ def get_output_format(input_value):
         return options
 
 @app.callback(
-    Output('input_file', 'data'), 
-    [Input('upload_file', 'filename'), 
+    Output('input_file', 'data'),
+    [Input('upload_file', 'filename'),
      Input('upload_file', 'contents')])
 def collect_file(filename, contents):
     """Decode and store a file uploaded with Plotly Dash."""
@@ -81,8 +82,8 @@ def collect_file(filename, contents):
 
 
 @app.callback(
-    Output('converter', 'children'), 
-    [Input('input-dropdown', 'value'), 
+    Output('converter', 'children'),
+    [Input('input-dropdown', 'value'),
      Input('output-dropdown', 'value')])
 def update_output(value_input, value_output):
     if value_input and value_output:
@@ -96,10 +97,10 @@ def bash_command(cmd):
 
 
 @app.callback(
-    Output('convertion', 'children'), 
-    [Input('upload_file', 'filename'), 
-     Input('input-dropdown', 'value'), 
-     Input('output-dropdown', 'value'), 
+    Output('convertion', 'children'),
+    [Input('upload_file', 'filename'),
+     Input('input-dropdown', 'value'),
+     Input('output-dropdown', 'value'),
      Input('submit_button', 'n_clicks')])
 def convert(filename, input_value, output_value, button):
     if button and input_value and output_value:
@@ -111,8 +112,8 @@ def convert(filename, input_value, output_value, button):
                html.P(' bioconvert {}2{} {}'.format(input_value, output_value, filename), style= {"font-weight":"bold"})
 
 @app.callback(
-    Output('fake', 'children'), 
-    [Input('upload_file', 'filename'), 
+    Output('fake', 'children'),
+    [Input('upload_file', 'filename'),
      Input('output-dropdown', 'value')]
 )
 def converted_file_name(filename, format):
@@ -124,7 +125,7 @@ def converted_file_name(filename, format):
 
 
 @app.callback(
-    Output('link', 'children'), 
+    Output('link', 'children'),
     [Input('fake', 'children'),Input('submit_button','n_clicks')]
 )
 def file_download_link(filename,button):
@@ -148,8 +149,6 @@ def get_file(filename):
             pass  # pragma: no cover
         return response
     return send_from_directory(UPLOAD_DIRECTORY, filename, as_attachment=True)
-
-
 
 
 if __name__ == '__main__':

@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
-def home(): 
+def home():
     return {
         'backgroundColor': 'red',
         'width': '20%',
         'display': 'inline-block',
         'text-align': 'center',
         'padding': '50px',
-
-
     }
 
 
-def header(): 
+def header():
     return {
         'backgroundColor': '#3f51b5',
         'color': 'white',
@@ -22,12 +20,10 @@ def header():
         'display': 'inline-block',
         'padding': '50px',
         'text-align': 'right'
-
-        
     }
 
 
-def title(): 
+def title():
     return {
         'color': '#050D36',
         'fontSize': 80,
@@ -36,7 +32,7 @@ def title():
     }
 
 
-def icon_style(): 
+def icon_style():
     return {
         'height': '25px',
         'width': '25px',
@@ -46,7 +42,7 @@ def icon_style():
     }
 
 
-def home_div(): 
+def home_div():
     return {
         'display': 'inline-block',
         'width': '180px',
@@ -54,11 +50,11 @@ def home_div():
      }
 
 
-def text_icon(): 
+def text_icon():
     return {
-        'width': "350px",
+        'width': "80%",
         'display': 'block',
-        'marginLeft': '380px',
+        'marginLeft': '100px',
         'font-family': 'Bookman, URW Bookman L, serif',
         'fontSize': 25,
         "textAlign": "center",
@@ -66,7 +62,7 @@ def text_icon():
     }
 
 
-def submit(): 
+def submit():
     return {
         'background': '#FF8C00',
         'fontSize': '30px',
@@ -77,7 +73,7 @@ def submit():
     }
 
 
-def download(): 
+def download():
     return {
         'background': '#00FF00',
         'fontSize': '30px',
@@ -90,24 +86,22 @@ def download():
     }
 
 
-def footer(): 
+def footer():
     return {
-        'background': '#050D36',
+        'background': '#000000',
         'color': 'white',
-        "font-family": "Garamond, serif",
-        "font-weight": "bold",
-        'fontSize': 20,
+        #"font-family": "Garamond, serif",
+        #"font-weight": "bold",
+        #'fontSize': 20,
         # 'height': '100px',
         'width': '95%',
         'display': 'inline-block',
-
-
     }
 
 
-def tooltip_style(): 
+def tooltip_style():
     return {
-        "color": "red",
-        'background-color': 'white',
+        "color": "white",
+        'background-color': 'orange',
         'text-align': 'center'
     }
