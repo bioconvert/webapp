@@ -16,7 +16,7 @@
     font-size: 30px;
 }
 			
-.cercle {
+.circle {
     display:block;
     width:30px;
     height:30px;
@@ -29,7 +29,7 @@
     margin-left: 130px;
 }
 
-.cercle .cercle_text {
+.circle .circle_text {
     display:block;
     font-weight:bold;
     font-size: 25px;
